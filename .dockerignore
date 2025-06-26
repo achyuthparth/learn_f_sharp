@@ -1,0 +1,50 @@
+# Git and version control
+.git
+.gitignore
+
+# Documentation that doesn't need to be in container
+*.md
+!README.md
+
+# Books folder (large PDFs)
+books/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Conda environments (will be created fresh)
+.conda/
+envs/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Data directories (can be large)
+data/real/
+data/synthetic/
+
+# Build artifacts
+bin/
+obj/
+*.dll
+*.exe

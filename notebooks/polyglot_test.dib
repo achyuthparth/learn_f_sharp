@@ -1,0 +1,92 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp"},{"name":"f_sharp","languageName":"python"},{"name":"fsharp","languageName":"F#","aliases":["f#","fs"]},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
+
+#!markdown
+
+# 🚀 Polyglot Kernel Verification
+
+This notebook tests both **F#** and **Python** kernels using proper `.dib` format with magic commands.
+
+## Setup Instructions
+
+1. **Update your existing f_sharp environment**:
+   ```bash
+   conda env update -f environment.yml
+   conda activate f_sharp
+   python -m ipykernel install --user --name=f_sharp --display-name "Python (f_sharp)" --force
+   ```
+
+2. **Verify .NET SDK**:
+   ```bash
+   dotnet --version
+   dotnet tool install -g Microsoft.dotnet-interactive
+   dotnet interactive jupyter install
+   ```
+
+3. **In VS Code**: Open this `.dib` file and select kernels when prompted.
+
+#!markdown
+
+#!about
+
+// Check if f_sharp kernel is already connected
+// Setup: Connect Python kernel if not already connected
+// This cell will show an error if kernel is already connected - that's normal!
+
+#!connect jupyter --kernel-name f_sharp --kernel-spec f_sharp
+
+#!fsharp
+
+// F# Test: Mathematical operations
+let square x = x * x
+let add a b = a + b
+
+// Test the functions
+let result = square 7
+let sum = add 3 4
+
+printfn "F# Results:"
+printfn "square(7) = %d" result
+printfn "add(3,4) = %d" sum
+
+// Verify: should output 49 and 7
+result
+
+#!f_sharp
+
+#!f_sharp
+
+# Python Test: Equivalent operations
+def square(x):
+    return x * x
+
+def add(a, b):
+    return a + b
+
+# Test the functions
+result = square(7)
+sum_result = add(3, 4)
+
+print("Python Results:")
+print(f"square(7) = {result}")
+print(f"add(3,4) = {sum_result}")
+
+# Verify: should output 49 and 7
+result
+
+#!markdown
+
+## ✅ Expected Results
+
+Both cells should produce:
+- `square(7) = 49`
+- `add(3,4) = 7`
+
+If both work, your polyglot environment is ready!
+
+## 🎯 Next: Module Development
+
+Ready to create your first lesson notebook:
+- `module1_logic_proofs.dib` - F# focused mathematical proofs
+- `module2_linear_algebra.dib` - F# + Python numerical work
