@@ -15,7 +15,7 @@ This module introduces the learner to formal reasoning via F#, serving as a brid
 |--------|-----------------------------------------------------|---------------------------------------------|
 | 1      | Getting Started with the F# Interactive             | 1.1–1.2                                      |
 | 2      | Writing Simple Tests & Reasoning About Primes       | 1.2, 1.7                                     |
-| 3      | Type Declarations and Identifiers                   | 1.3–1.4, 1.6                                 |
+| 3      | Type Declarations and Identifiers                   | 1.3–1.4, 1.6 + CTFP Ch 1-2                  |
 | 4      | Equations and Equational Reasoning                  | 1.5, 1.9                                     |
 | 5      | Working with Lists: `List.map` and `List.filter`    | 1.8                                          |
 | 6      | Introduction to Logical Connectives                 | 2.1                                          |
@@ -39,6 +39,10 @@ This module introduces the learner to formal reasoning via F#, serving as a brid
 ### 🎯 Lesson 3: Type Declarations and Identifiers
 - Understand type signatures and annotations in F#
 - Explore polymorphism and type inference in a functional context
+- Learn functions as arrows and composition as the essence of programming
+- Master the laws of composition: associativity and identity
+- Distinguish between pure and impure functions using types
+- Apply algebraic data types and explore their compositional properties
 
 ### 🎯 Lesson 4: Equations and Equational Reasoning
 - Use pattern matching and functional definitions
@@ -92,6 +96,7 @@ This module introduces the learner to formal reasoning via F#, serving as a brid
 
 **Primary Source:**
 - **[HR]** *The Haskell Road to Logic, Math and Programming* (adapted to F#)
+- **[CT]** *Category Theory for Programmers* by Bartosz Milewski (Chapters 1-2)
 
 **Supporting Materials:**
 - **[CM]** *Concrete Mathematics* 

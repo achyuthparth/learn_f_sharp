@@ -6,7 +6,7 @@
 
 ---
 
-## 🧠 Lesson 1 — Getting Started with the F# Interactive
+## 🧠 Lesson 1, 2 — Getting Started with the F# Interactive
 
 ### 🔍 Purpose
 This lesson introduces learners to the F# Interactive environment (FSI) using the Polyglot Notebook kernel. The goal is to build comfort entering expressions, interpreting output, and understanding the REPL-driven development workflow.
@@ -123,16 +123,16 @@ Now we transition from basic REPL exploration to mathematical definitions. This 
 
 Let's implement this fundamental concept:
 
-#!csharp
+#!fsharp
 
 // Implementation of divisibility
 let divides d n = n % d = 0
 
 // Test the function
-divides 3 12    // true, since 12 = 3 * 4
-divides 5 12    // false, since 12 mod 5 = 2
-divides 2 8     // true, since 8 = 2 * 4
-divides 7 21    // true, since 21 = 7 * 3
+printfn "%b" (divides 3 12)    // true, since 12 = 3 * 4
+printfn "%b" (divides 5 12)    // false, since 12 mod 5 = 2
+printfn "%b" (divides 2 8)     // true, since 8 = 2 * 4
+printfn "%b" (divides 7 21)   // true, since 21 = 7 * 3
 
 #!markdown
 
@@ -150,7 +150,7 @@ divides 7 21    // true, since 21 = 7 * 3
 1. If LD(n) = c weren't prime, write c = a·b with 1 < a < c ⟹ a|n contradicts minimality.
 2. If n = c·a, with c = LD(n), then a ≥ c ⟹ c² ≤ c·a = n.
 
-#!csharp
+#!fsharp
 
 // Algorithm for finding Least Divisor
 // Helper function: LDF (k, n) - find least divisor of n that's ≥ k
@@ -159,7 +159,7 @@ let rec ldf k n =
     if divides k n then
         k                    // Case 1: k divides n → return k
     elif k * k > n then
-        n                    // Case 2: k² > n → no smaller factors, n is prime
+        n                    // Case 2: k² > n → n has no divisors ≤ √n, so n is prime. Return n as the least divisor (which equals n for primes)
     else
         ldf (k + 1) n       // Otherwise: try k+1
 
@@ -167,9 +167,10 @@ let rec ldf k n =
 let ld n = ldf 2 n
 
 // Test the algorithm
-ld 15    // Should return 3 (smallest divisor > 1)
-ld 17    // Should return 17 (17 is prime)
-ld 91    // Should return 7 (91 = 7 * 13)
+printfn "%d" (ld 15)    // Should return 3 (smallest divisor > 1)
+printfn "%d" (ld 17)    // Should return 17 (17 is prime)
+printfn "%d" (ld 91)    // Should return 7 (91 = 7 * 13)
+printfn "%d" (ld 68)    
 
 #!markdown
 
@@ -183,7 +184,7 @@ Combining our LD function with the mathematical propositions, we can create an e
 - If n < 2 → error (primality undefined for n < 2)
 - Otherwise: n is prime ⟺ ld(n) = n
 
-#!csharp
+#!fsharp
 
 // Prime testing function
 let prime0 n =
@@ -193,15 +194,15 @@ let prime0 n =
         ld n = n
 
 // Test the prime function
-prime0 2      // true (2 is prime)
-prime0 17     // true (17 is prime)  
-prime0 97     // true (97 is prime)
-prime0 15     // false (15 = 3 * 5)
-prime0 91     // false (91 = 7 * 13)
+printfn "prime0 2 = %b" (prime0 2)      // true (2 is prime)
+printfn "prime0 17 = %b" (prime0 17)    // true (17 is prime)  
+printfn "prime0 97 = %b" (prime0 97)    // true (97 is prime)
+printfn "prime0 15 = %b" (prime0 15)    // false (15 = 3 * 5)
+printfn "prime0 91 = %b" (prime0 91)    // false (91 = 7 * 13)
 
 // Test edge cases that should fail
-// prime0 1      // This would throw an error
-// prime0 0      // This would throw an error
+//printfn "%b" (prime0 1)      // This would throw an error
+//prime0 0      // This would throw an error
 
 #!markdown
 
@@ -211,28 +212,28 @@ Now let's use our functions interactively, as you would in a real FSI session. T
 
 ### 🧪 Try It Yourself!
 
-#!csharp
+#!fsharp
 
 // Exercise 1: Compute ld 91 (following textbook example)
-ld 91    // Expected: 7
+printfn "ld 91 = %d" (ld 91)    // Expected: 7
 
 // Exercise 2: Test some prime numbers
-prime0 97    // Expected: true
-prime0 101   // Expected: true
+printfn "prime0 97 = %b" (prime0 97)    // Expected: true
+printfn "prime0 101 = %b" (prime0 101)   // Expected: true
 
 // Exercise 3: Test some composite numbers
-prime0 100   // Expected: false
-prime0 77    // Expected: false (77 = 7 * 11)
+printfn "prime0 100 = %b" (prime0 100)   // Expected: false
+printfn "prime0 77 = %b" (prime0 77)    // Expected: false (77 = 7 * 11)
 
 // Exercise 4: Explore the divisibility function
-divides 7 91     // true, since 91 = 7 * 13
-divides 13 91    // true, since 91 = 7 * 13
-divides 11 91    // false
+printfn "divides 7 91 = %b" (divides 7 91)     // true, since 91 = 7 * 13
+printfn "divides 13 91 = %b" (divides 13 91)    // true, since 91 = 7 * 13
+printfn "divides 11 91 = %b" (divides 11 91)    // false
 
 // Exercise 5: Understand the LD algorithm step by step
-ldf 2 91    // Start checking from 2
-ldf 3 91    // Check from 3  
-ldf 7 91    // Check from 7 - this should return 7
+printfn "ldf 2 91 = %d" (ldf 2 91)    // Start checking from 2
+printfn "ldf 3 91 = %d" (ldf 3 91)    // Check from 3  
+printfn "ldf 7 91 = %d" (ldf 7 91)    // Check from 7 - this should return 7
 
 #!markdown
 
@@ -274,7 +275,7 @@ The next lessons will build on these foundations:
 
 ---
 
-#!csharp
+#!fsharp
 
 // 🎯 Exploration Exercises (Textbook Style)
 
@@ -290,8 +291,8 @@ printfn "n = %d, LD(n) = %d, (LD(n))² = %d" n ldN (ldN * ldN)
 // Since 91 = 7 * 13 is composite, we should have 7² = 49 ≤ 91 ✓
 
 // 3. Explore larger numbers
-ld 1001    // What's the smallest divisor of 1001?
-prime0 1009  // Is 1009 prime?
+printfn "ld 1001 = %d" (ld 1001)    // What's the smallest divisor of 1001?
+printfn "prime0 1009 = %b" (prime0 1009)  // Is 1009 prime?
 
 // 4. Understanding the algorithm's efficiency
 // The ldf function stops checking at k² > n, making it efficient

@@ -33,10 +33,17 @@ dotnet interactive jupyter install
 ## Testing Your Setup
 
 1. Open `notebooks/polyglot_test.dib`
-2. Select kernels when prompted:
-   - F# cells → `.NET Interactive F#`
+2. **Important**: Select kernels when prompted in VS Code:
+   - F# cells → `.NET Interactive F#` 
    - Python cells → `Python (f_sharp)`
-3. Execute both cells - should output identical mathematical results
+3. **Do NOT add magic commands** - Let VS Code handle kernel selection
+4. Execute both cells - should output identical mathematical results
+
+## ⚠️ Common Mistakes to Avoid
+
+- **Don't add `#!fsharp` or `#!python` magic commands** - These interfere with proper kernel selection
+- **Don't modify the `#!about` cell** - This provides kernel information
+- **Select the correct kernel** in VS Code's kernel picker for each cell type
 
 ## Troubleshooting
 
@@ -54,6 +61,29 @@ dotnet interactive jupyter install
 conda activate f_sharp
 python -m ipykernel install --user --name=f_sharp --display-name "Python (f_sharp)" --force
 ```
+
+### Duplicate Output Issues
+If you see duplicate outputs (e.g., "square(7) = 49 49" instead of "square(7) = 49"):
+
+**This indicates corrupted kernel state. Follow these steps:**
+
+```powershell
+# 1. Restart .NET Interactive completely
+dotnet tool uninstall -g Microsoft.dotnet-interactive
+dotnet tool install -g Microsoft.dotnet-interactive
+dotnet interactive jupyter install
+
+# 2. Restart VS Code completely
+# Close VS Code entirely, then reopen
+
+# 3. Clear notebook outputs
+# In VS Code: Command Palette → "Notebook: Clear All Outputs"
+
+# 4. Run cells one by one
+# Don't run multiple cells rapidly - let each complete first
+```
+
+**Prevention:** Never add `#!fsharp` or `#!python` magic commands manually!
 
 ### Environment Variables (if needed)
 Add to your PATH:
