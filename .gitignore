@@ -1,3 +1,24 @@
+# Textbook PDFs
 books/
 
+# F# Build artifacts
 .fake
+bin/
+obj/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# IDE files
+.vscode/
+.vs/
+
+# OS files
+.DS_Store
+Thumbs.db

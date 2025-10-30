@@ -1,46 +1,51 @@
-# learn_f_sharp
-Learning Functional Programming via F# with Polyglot Notebooks
+# Learn F# Through Mathematical Programming
 
-## 🚀 Quick Start
+A collection of programming exercises and examples from mathematical textbooks, implemented in F# and Python.
 
-### 1. Environment Setup
-```powershell
-# Update your existing f_sharp environment
-conda env update -f environment.yml
-conda activate f_sharp
+## 📚 Source Materials
 
-# Register Python kernel
-python -m ipykernel install --user --name=f_sharp --display-name "Python (f_sharp)" --force
+- **[HR]** *The Haskell Road to Logic, Math and Programming* - Doets & van Eijck  
+- **[CTFP]** *Category Theory for Programmers* - Milewski
+- **[GA]** *Contemporary Abstract Algebra* - Gallian
 
-# Install .NET Interactive for F#
-dotnet tool install -g Microsoft.dotnet-interactive
-dotnet interactive jupyter install
+## 🎯 Approach
+
+- **Haskell → F#**: All Haskell code examples and exercises converted to F#
+- **C++ → Python**: Computational exercises originally in C++ implemented in Python
+- **Focus**: Practical programming exercises and implementations, not theory notes
+
+## 📁 Structure
+
+```
+exercises/
+├── haskell-road/           # F# implementations from [HR]
+│   ├── ch01-getting-started/
+│   ├── ch02-mathematical-objects/
+│   ├── ch03-logic-proof/
+│   └── ...
+├── category-theory/        # F# implementations from [CTFP]  
+│   ├── ch01-composition/
+│   ├── ch02-types-functions/
+│   └── ...
+└── abstract-algebra/       # Python implementations from [GA]
+    ├── ch01-integers/
+    ├── ch02-groups/
+    └── ...
 ```
 
-### 2. Test Your Setup
-Open `notebooks/polyglot_test.dib` in VS Code and run both F# and Python cells.
+## 🚀 Getting Started
 
-### 3. Start Learning
-- **Part 1**: Functional Programming fundamentals
-- **Part 2**: Linear Algebra with F# + Python
-- **Part 3**: Calculus & Numerical Methods
-- **Part 4**: Mathematical Analysis
+1. Install F# development environment
+2. Install Python 3.x
+3. Navigate to specific exercise directories
+4. Follow README instructions in each chapter
 
-## 📁 Project Structure
+## � Usage
 
-- `environment.yml` - Conda environment specification
-- `POLYGLOT_SETUP.md` - Detailed setup instructions
-- `notebooks/` - Interactive learning notebooks (.dib format)
-- `part1-functional-programming/` - Core F# concepts
-- `part2-linear-algebra/` - Matrix operations & visualization
-- `part3-calculus-numerics/` - Numerical methods
-- `part4-analysis/` - Advanced mathematical analysis
+Each exercise directory contains:
+- Source code files with implementations
+- Comments referencing original textbook sections
+- Simple test cases or examples
+- Minimal explanation of key concepts (when needed for context)
 
-## 🛠️ Prerequisites
-
-- **VS Code** with Polyglot Notebooks extension
-- **.NET SDK** (7.0 or later)
-- **Anaconda/Miniconda**
-- **Git** for version control
-
-Ready to dive into functional programming? Start with the setup guide!
+This is a practical companion to the textbooks, not a replacement for reading them.
